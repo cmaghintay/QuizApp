@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<head>
+    <link rel="stylesheet" type="text/css" href="reset.css">
+    <link rel="stylesheet" type="text/css" href="main.css">
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/jquery-ui.min.js"></script>
+    <script src="script.js"></script>
+
+<!--QUIZ SCRIPT-->
+    
+    <script>
+        
+//Variables        
+        var Q1 = ["What is the second letter of the alphabet?", "Aey", "Bee", "See", 2];
+        
+        var question = document.getElementById("question");
+        var answer1 =  document.getElementById("option1");
+        var answer2 =  document.getElementById("option2");
+        var answer3 =  document.getElementById("option3");
+        
+        function newGame() {
+            $("#titleScreen").fadeOut(function(){
+            
+                var question = Q1[0];
+                var answer1 = Q1[1];
+                var answer2 = Q1[2];
+                var answer3 = Q1[3];
+    
+                $("h4").replaceWith("<h4>"+question+"</h4>");
+                $("#option1").replaceWith("<span id='option1'>"+answer1+"</span>");
+                $("#option2").replaceWith("<span id='option2'>"+answer2+"</span>");                 $("#option3").replaceWith("<span id='option3'>"+answer3+"</span>");
+                $("#questionScreen").fadeIn();
+                
+            });
+
+        };    
+            
+        function validateQuestion() {
+            
+            var userAnswer = document.getElementById("questionList").value;
+            console.log(userAnswer);
+            
+            if (Q1[4]==userAnswer) {
+                alert("Yes");
+            }
+            else {
+                alert("Nope");
+            }
+        };
+        
+        
+    </script>
+    
+</head>
+<body>
+    
+<!--Header-->
+
+    <div id="header">
+        <h1>TODAY<span class="you">U</span>LEARNED</h1>
+        <hr>
+        <h6>A little quiz based on interesting facts I learned on <a href="http://www.reddit.com/r/todayilearned">reddit.com/r/todayilearned</a></h6>        
+    </div>
+    
+    
+<!--Game Window-->
+
+    <div id="mainWrapper">
+
+        <div id="titleScreen">
+            <h4>I just learned these facts. Do you know any of these?</h4>
+            <button type="button" onclick="newGame()">Start Quiz</button>
+        </div>
+        
+        <div id="questionScreen">
+            <h4 id="question">QUESTION 1 (The answer is 1.)</h4>
+            <form id="questionList">
+                <span class="answerOption"><input id="ans0" type="radio" name="answer" value=0><span id="option1">Answer 1</span></span>
+                <span class="answerOption"><input id="ans1" type="radio" name="answer" value=1><span id="option2">Answer 2</span></span>
+                <span class="answerOption"><input id="ans2" type="radio" name="answer" value=2><span id="option3">Answer 3</span></span>
+                <button type="button" onclick="validateQuestion()">Submit Answer</button>
+            </form>
+        </div>
+
+    </div>
+
+</body>
